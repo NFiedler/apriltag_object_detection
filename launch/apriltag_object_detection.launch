@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- AprilTags 2 -->
+  <node pkg="apriltags2_ros" type="apriltags2_ros_continuous_node" name="apriltags2_ros_continuous_node" clear_params="true" >
+    <!-- Remap topics from those used in code to those on the ROS network -->
+    <remap from="image_rect" to="/usb_cam/image_raw" />
+    <remap from="camera_info" to="/usb_cam/camera_info" />
+
+    <param name="camera_frame" type="str" value="camera" />
+    <param name="publish_tag_detections_image" type="bool" value="false" />   <!-- default: false -->
+
+    <rosparam command="load" file="$(find apriltag_object_detection)/config/apriltags2/settings.yaml"/>
+    <rosparam command="load" file="$(find apriltag_object_detection)/config/apriltags.yaml"/>
+  </node>
+
+  <node pkg="apriltag_object_detection" type="apriltag_object_detection" name="apriltag_object_detection" output="screen">
+    <rosparam command="load" file="$(find apriltag_object_detection)/config/objects.yaml" />
+  </node>
+
+</launch>
+

@@ -1,0 +1,36 @@
+# Defenitions of training objects
+# object type is one of CUBE, SPHERE, CYLIINDER, MESH
+# tag size is defined in TODO
+objects:
+  - object:
+      name: "continente coffee"
+      type: CUBE
+      tag_id: 110 
+      scale: {x: 0.06, y: 0.06, z: 0.136}
+      # tag offset
+      origin: [0.0, 0.0, -0.068]
+      rpy: [0.0, 0.0, 0.0]
+#      tags: [11, 12, 13]
+  - object:
+      name: "dummy"
+      type: CUBE
+      tag_id: 111
+      scale: {x: 0.05, y: 0.05, z: 0.05}
+      # tag offset
+      origin: [0.0, 0.0, 0.0]
+      rpy: [0.0, 0.0, 0.0]
+#      tags: [21, 22, 23]
+  - object:
+      name: "dummy"
+      type: CUBE
+      tag_id: 112
+      scale: {x: 0.05, y: 0.05, z: 0.05}
+      # tag offset
+      origin: [0.0, 0.0, 0.0]
+      rpy: [0.0, 0.0, 0.0]
+#      tags: [31, 32, 33]
+#  - object:
+#      type: MESH
+#      mesh: '<path_to_mesh>'
+#      tags: [41, 42, 43]
+#      scale: {x: 0.1, y: 0.1, z: 0.1}
