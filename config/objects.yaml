@@ -1,6 +1,9 @@
+# These are just dummy objects
+# If you want to use own objects, create and load an own apriltag and object yaml file
+
 # Defenitions of training objects
 # object type is one of CUBE, SPHERE, CYLIINDER, MESH
-# tag size is defined in TODO
+# tag size is defined in apriltags yaml
 objects:
   - object:
       name: "continente coffee"

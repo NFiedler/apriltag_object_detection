@@ -1,4 +1,6 @@
-standalone_tags: 
+# These are dummy tags
+# If you want to use own objects, create and load an own apriltag and object yaml file
+standalone_tags:
   [
   {id: 110, size: 0.046},
   {id: 111, size: 0.046},

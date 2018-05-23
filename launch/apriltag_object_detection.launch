@@ -1,22 +1,27 @@
 <?xml version="1.0"?>
+
+<!-- Depending on your scenario it might make sense to use a custom launch file -->
+
 <launch>
+  <arg name="objects" default="$(find apriltag_object_detection)/config/objects.yaml" />
+  <arg name="apriltags" default="$(find apriltag_object_detection)/config/apriltags.yaml" />
+  <arg name="image_topic" default="/usb_cam/image_raw" />
+  <arg name="camera_info_topic" default="/usb_cam/camera_info" />
 
   <!-- AprilTags 2 -->
   <node pkg="apriltags2_ros" type="apriltags2_ros_continuous_node" name="apriltags2_ros_continuous_node" clear_params="true" >
-    <!-- Remap topics from those used in code to those on the ROS network -->
-    <remap from="image_rect" to="/usb_cam/image_raw" />
-    <remap from="camera_info" to="/usb_cam/camera_info" />
+    <remap from="image_rect" to="$(arg image_topic)" />
+    <remap from="camera_info" to="$(arg camera_info_topic)" />
 
     <param name="camera_frame" type="str" value="camera" />
-    <param name="publish_tag_detections_image" type="bool" value="false" />   <!-- default: false -->
+    <param name="publish_tag_detections_image" type="bool" value="false" />
 
     <rosparam command="load" file="$(find apriltag_object_detection)/config/apriltags2/settings.yaml"/>
-    <rosparam command="load" file="$(find apriltag_object_detection)/config/apriltags.yaml"/>
+    <rosparam command="load" file="$(arg apriltags"/>
   </node>
 
   <node pkg="apriltag_object_detection" type="apriltag_object_detection" name="apriltag_object_detection" output="screen">
-    <rosparam command="load" file="$(find apriltag_object_detection)/config/objects.yaml" />
+    <rosparam command="load" file="$(arg objects)" />
   </node>
 
 </launch>
-
