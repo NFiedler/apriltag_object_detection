@@ -17,7 +17,7 @@
     <param name="publish_tag_detections_image" type="bool" value="false" />
 
     <rosparam command="load" file="$(find apriltag_object_detection)/config/apriltags2/settings.yaml"/>
-    <rosparam command="load" file="$(arg apriltags"/>
+    <rosparam command="load" file="$(arg apriltags)"/>
   </node>
 
   <node pkg="apriltag_object_detection" type="apriltag_object_detection" name="apriltag_object_detection" output="screen">
