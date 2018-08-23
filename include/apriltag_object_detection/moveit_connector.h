@@ -1,10 +1,11 @@
 #ifndef APRILTAG_OBJECT_DETECTION
 #define APRILTAG_OBJECT_DETECTION
 
-#include <apriltags2_ros/AprilTagDetectionArray.h>
 #include <ros/ros.h>
 #include <visualization_msgs/MarkerArray.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
+#include <moveit_msgs/CollisionObject.h>
+#include <tf/transform_listener.h>
 
 class MoveitConnector {
 public:
