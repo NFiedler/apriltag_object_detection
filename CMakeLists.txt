@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   apriltags2_ros
   visualization_msgs
   tf
+  moveit_ros_planning_interface
 )
 
 catkin_package(
@@ -29,6 +30,10 @@ target_link_libraries(${PROJECT_NAME}_lib ${catkin_LIBRARIES})
 add_executable(apriltag_object_detection src/apriltag_object_detection.cpp)
 target_link_libraries(apriltag_object_detection ${catkin_LIBRARIES})
 add_dependencies(apriltag_object_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+add_executable(moveit_connector src/moveit_connector.cpp)
+target_link_libraries(moveit_connector ${catkin_LIBRARIES})
+add_dependencies(moveit_connector ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 install(DIRECTORY include/${PROJECT_NAME}/
  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
