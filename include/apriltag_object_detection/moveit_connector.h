@@ -4,6 +4,7 @@
 #include <ros/ros.h>
 #include <map>
 #include <vector>
+#include <algorithm>
 #include <visualization_msgs/MarkerArray.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 #include <moveit_msgs/CollisionObject.h>
@@ -19,6 +20,7 @@ public:
 private:
   ros::NodeHandle nh_;
   std::map<std::string, ros::Timer> collision_object_remove_timers_;
+  std::vector<std::string> pci_collision_objects_;
   uint object_lifetime_secs_ = 10;
 
 
