@@ -9,10 +9,15 @@ MoveitConnector::MoveitConnector() : nh_() {
 
 void MoveitConnector::objectsCallback(const visualization_msgs::MarkerArray &msg){
   moveit_msgs::CollisionObject collision_object;
-  for(int i = 0; i < msg.markers.size(); i++) {
+  for(uint i = 0; i < msg.markers.size(); i++) {
     if(!markerMsgToCollisionObjectMsg(msg.markers[i], "/odom_combined", collision_object)) {
       ROS_ERROR_STREAM("Marker could not get transformed to a CollisionObject!");
       continue;
+    }
+    if ( collision_object_remove_timers_.find(static_cast<std::string>(collision_object.id)) == collision_object_remove_timers_.end() ) {
+      collision_object_remove_timers_.insert(std::pair<std::string, ros::Timer>(static_cast<std::string>(collision_object.id), nh_.createTimer(ros::Duration(object_lifetime_secs_), [this, id = static_cast<std::string>(collision_object.id)](const ros::TimerEvent& evt){remove_collision_object(id);}, true)));
+    } else {
+      collision_object_remove_timers_[static_cast<std::string>(collision_object.id)].setPeriod(ros::Duration(object_lifetime_secs_), true); // resetting period to reset the timer
     }
     if(!psi_->getAttachedObjects(std::vector<std::string>({static_cast<std::string>(collision_object.id)})).empty()){ // just checking if the object is an attached collision object
       ROS_DEBUG_STREAM("Object detection detected attached object: " << collision_object.id);
@@ -26,6 +31,11 @@ void MoveitConnector::objectsCallback(const visualization_msgs::MarkerArray &msg
     }
   }
 
+}
+
+void MoveitConnector::remove_collision_object(std::string object_id){
+  ROS_DEBUG_STREAM("Removing object \"" << object_id << "\" from planning scene because it was too old.");
+  psi_->removeCollisionObjects(std::vector<std::string>({object_id}));
 }
 
 int main(int argc, char **argv) {
