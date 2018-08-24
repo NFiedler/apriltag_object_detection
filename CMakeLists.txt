@@ -33,6 +33,7 @@ add_dependencies(apriltag_object_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} $
 
 add_executable(moveit_connector src/moveit_connector.cpp)
 target_link_libraries(moveit_connector ${catkin_LIBRARIES})
+target_link_libraries(moveit_connector ${catkin_LIBRARIES} ${PROJECT_NAME}_lib)
 add_dependencies(moveit_connector ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 install(DIRECTORY include/${PROJECT_NAME}/
