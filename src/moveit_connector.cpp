@@ -45,6 +45,7 @@ void MoveitConnector::objectsCallback(const visualization_msgs::MarkerArray &msg
 void MoveitConnector::remove_collision_object(std::string object_id){
   ROS_DEBUG_STREAM("Removing object \"" << object_id << "\" from planning scene because it was too old.");
   psi_->removeCollisionObjects(std::vector<std::string>({object_id}));
+  pci_collision_objects_.erase(std::remove(pci_collision_objects_.begin(), pci_collision_objects_.end(), object_id), pci_collision_objects_.end()); // removing object from known objects
 }
 
 int main(int argc, char **argv) {
