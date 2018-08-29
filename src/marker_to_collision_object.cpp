@@ -43,7 +43,7 @@ bool markerMsgToCollisionObjectMsg(
   tf::TransformListener listener;
   try {
     listener.waitForTransform(frame_id, marker.header.frame_id, ros::Time(0),
-                              ros::Duration(5.0));
+                              ros::Duration(0.5));
     listener.lookupTransform(frame_id, marker.header.frame_id, ros::Time(0),
                              marker_transform);
   } catch (tf::TransformException ex) {
