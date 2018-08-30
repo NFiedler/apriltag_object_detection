@@ -1,16 +1,17 @@
 #include <apriltag_object_detection/marker_to_collision_object.h>
 
-#include <tf/transform_listener.h>
 
 bool markerMsgToCollisionObjectMsg(
     visualization_msgs::Marker marker,
-    moveit_msgs::CollisionObject &collision_object) {
-  return markerMsgToCollisionObjectMsg(marker, "world", collision_object);
+    moveit_msgs::CollisionObject &collision_object,
+    tf::TransformListener *listener) {
+  return markerMsgToCollisionObjectMsg(marker, "world", collision_object, listener);
 }
 
 bool markerMsgToCollisionObjectMsg(
     visualization_msgs::Marker marker, std::string frame_id,
-    moveit_msgs::CollisionObject &collision_object) {
+    moveit_msgs::CollisionObject &collision_object,
+    tf::TransformListener *listener) {
   moveit_msgs::CollisionObject result;
 
   // header
@@ -40,11 +41,10 @@ bool markerMsgToCollisionObjectMsg(
   tf::StampedTransform marker_transform;
   tf::Transform object_transform;
 
-  tf::TransformListener listener;
   try {
-    listener.waitForTransform(frame_id, marker.header.frame_id, marker.header.stamp,
+    listener->waitForTransform(frame_id, marker.header.frame_id, marker.header.stamp,
                               ros::Duration(0.5));
-    listener.lookupTransform(frame_id, marker.header.frame_id, marker.header.stamp,
+    listener->lookupTransform(frame_id, marker.header.frame_id, marker.header.stamp,
                              marker_transform);
   } catch (tf::TransformException ex) {
     ROS_ERROR("%s", ex.what());

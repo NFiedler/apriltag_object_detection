@@ -11,7 +11,7 @@ void MoveitConnector::objectsCallback(const visualization_msgs::MarkerArray &msg
   moveit_msgs::CollisionObject collision_object;
   std::string collision_object_id;
   for(uint i = 0; i < msg.markers.size(); i++) {
-    if(!markerMsgToCollisionObjectMsg(msg.markers[i], "/odom_combined", collision_object)) {
+    if(!markerMsgToCollisionObjectMsg(msg.markers[i], "/odom_combined", collision_object, &collision_object_transform_listener_)) {
       ROS_ERROR_STREAM("Marker could not get transformed to a CollisionObject!");
       continue;
     }
