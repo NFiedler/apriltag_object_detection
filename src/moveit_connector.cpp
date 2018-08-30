@@ -29,7 +29,8 @@ void MoveitConnector::objectsCallback(const visualization_msgs::MarkerArray &msg
       continue;
     }
     if (std::find(pci_collision_objects_.begin(), pci_collision_objects_.end(), collision_object_id) != pci_collision_objects_.end()) {
-      collision_object.operation = collision_object.MOVE; // move object when it is known
+      // collision_object.operation = collision_object.MOVE; // move object when it is known
+      collision_object.operation = collision_object.ADD;  // temporary fix to avoid error messages due to shapes in the CollisionObject msg
     } else {
       collision_object.operation = collision_object.ADD;
       pci_collision_objects_.push_back(collision_object_id); // add object to known objects
