@@ -6,32 +6,50 @@
 # tag size is defined in apriltags yaml
 objects:
   - object:
+      name: "table_lab_large"
+      type: CUBE
+      tag_id: 17
+      scale: {x: 1.6, y: 0.8, z: 0.68}
+      # tag offset
+      origin: [-0.71, -0.31, -0.34] # half the table width/length - 90mm tag center
+      rpy: [0.0, 0.0, -0.00]
+#      tags: [18, 19, 20]
+  - object:
+      name: "table_ur5"
+      type: CUBE
+      tag_id: 42
+      scale: {x: 1.0, y: 0.8, z: 0.74}
+      # tag offset
+      origin: [0.0, 0.0, -0.068]
+      rpy: [0.0, 0.0, 0.0]
+#      tags: [18, 19, 20]
+  - object:
       name: "continente coffee"
       type: CUBE
-      tag_id: 110 
+      tag_id: 110
       scale: {x: 0.06, y: 0.06, z: 0.136}
       # tag offset
       origin: [0.0, 0.0, -0.068]
       rpy: [0.0, 0.0, 0.0]
-#      tags: [11, 12, 13]
+#      tags: [111, 112, 113, 114]
   - object:
       name: "dummy"
       type: CUBE
-      tag_id: 111
+      tag_id: 115
       scale: {x: 0.05, y: 0.05, z: 0.05}
       # tag offset
       origin: [0.0, 0.0, 0.0]
       rpy: [0.0, 0.0, 0.0]
-#      tags: [21, 22, 23]
+#      tags: [116, 117, 118, 119]
   - object:
-      name: "dummy"
+      name: "dummy2"
       type: CUBE
-      tag_id: 112
+      tag_id: 120
       scale: {x: 0.05, y: 0.05, z: 0.05}
       # tag offset
       origin: [0.0, 0.0, 0.0]
       rpy: [0.0, 0.0, 0.0]
-#      tags: [31, 32, 33]
+#      tags: [121, 122, 123, 124]
 #  - object:
 #      type: MESH
 #      mesh: '<path_to_mesh>'
