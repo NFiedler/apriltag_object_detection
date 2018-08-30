@@ -42,9 +42,10 @@ bool markerMsgToCollisionObjectMsg(
   tf::Transform object_transform;
 
   try {
-    listener->waitForTransform(frame_id, marker.header.frame_id, marker.header.stamp,
+    ros::Time now = ros::Time(0);
+    listener->waitForTransform(frame_id, marker.header.frame_id, now,
                               ros::Duration(0.5));
-    listener->lookupTransform(frame_id, marker.header.frame_id, marker.header.stamp,
+    listener->lookupTransform(frame_id, marker.header.frame_id, now,
                              marker_transform);
   } catch (tf::TransformException ex) {
     ROS_ERROR("%s", ex.what());
