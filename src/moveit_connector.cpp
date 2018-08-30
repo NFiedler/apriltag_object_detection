@@ -75,11 +75,9 @@ void MoveitConnector::remove_collision_object(std::string object_id){
 }
 
 void MoveitConnector::enable_updates(){
-  //TODO: reset the objects and timers
   update_enabled_ = true;
-  for (auto& timer : collision_object_remove_timers_) {
-      timer.second.start();
-  }
+  // do this properly
+  psi_->removeCollisionObjects(pci_collision_objects_); // deletes every object which might be in the planning scene, including the table.
   ROS_INFO("Planning scene updates enabled.");
 }
 
