@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   visualization_msgs
   tf
   moveit_ros_planning_interface
+  pr2_phantom
 )
 
 catkin_package(

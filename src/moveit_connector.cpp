@@ -2,12 +2,37 @@
 
 MoveitConnector::MoveitConnector() : nh_() {
   psi_ = new moveit::planning_interface::PlanningSceneInterface();
+  update_enabled_ = true;
 
   object_sub_ = nh_.subscribe(
       "apriltag_objects", 1, &MoveitConnector::objectsCallback, this);
+  state_sub_ = nh_.subscribe(
+      "pr2_phantom/state", 1, &MoveitConnector::stateCallback, this);
+  plan_pick_sub_ = nh_.subscribe(
+          "pr2_phantom/plan_pick", 1, &MoveitConnector::planPickCallback, this);
+  plan_place_sub_ = nh_.subscribe(
+          "pr2_phantom/plan_place", 1, &MoveitConnector::planPlaceCallback, this);
+}
+
+void MoveitConnector::stateCallback(const pr2_phantom::State &msg){
+  // enabling updates when state is IDLE (after successful movement), PLANNING_FAILED (no current plan and no current attempt to plan) or ERROR (Error in the execution of a plan -> a new plan is needed)
+  if (msg.val == pr2_phantom::State::IDLE || msg.val == pr2_phantom::State::PLANNING_FAILED || msg.val == pr2_phantom::State::ERROR) {
+    enable_updates();
+  }
+}
+
+void MoveitConnector::planPickCallback(const geometry_msgs::PointStamped &msg) {
+  disable_updates();
+}
+void MoveitConnector::planPlaceCallback(const geometry_msgs::PointStamped &msg) {
+  disable_updates();
 }
 
 void MoveitConnector::objectsCallback(const visualization_msgs::MarkerArray &msg){
+  if (!update_enabled_)  // do not react to any messages
+  {
+      return;
+  }
   moveit_msgs::CollisionObject collision_object;
   std::string collision_object_id;
   for(uint i = 0; i < msg.markers.size(); i++) {
@@ -47,6 +72,23 @@ void MoveitConnector::remove_collision_object(std::string object_id){
   ROS_DEBUG_STREAM("Removing object \"" << object_id << "\" from planning scene because it was too old.");
   psi_->removeCollisionObjects(std::vector<std::string>({object_id}));
   pci_collision_objects_.erase(std::remove(pci_collision_objects_.begin(), pci_collision_objects_.end(), object_id), pci_collision_objects_.end()); // removing object from known objects
+}
+
+void MoveitConnector::enable_updates(){
+  //TODO: reset the objects and timers
+  update_enabled_ = true;
+  for (auto& timer : collision_object_remove_timers_) {
+      timer.second.start();
+  }
+  ROS_INFO("Planning scene updates enabled.");
+}
+
+void MoveitConnector::disable_updates(){
+  update_enabled_ = false;  // disabling the addition of new objects to the planning scene
+  for (auto& timer : collision_object_remove_timers_) {  // stopping the collision object remove timers
+      timer.second.stop();
+  }
+  ROS_INFO("Planning scene updates disabled.");
 }
 
 int main(int argc, char **argv) {
