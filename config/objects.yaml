@@ -49,6 +49,14 @@ objects:
       # tag offset
       origin: [0.0, 0.0, 0.0]
       rpy: [0.0, 0.0, 0.0]
+  - object:
+      name: "piece_of_wood"
+      type: CUBE
+      tag_id: 130
+      scale: {x: 0.057, y: 0.0395, z: 0.1225} # not sure if this is the correct order
+      # tag offset should be 0 as this is a bundle tag and the offset should be set correctly in the apriltags.yaml
+      origin: [0.0, 0.0, 0.0]
+      rpy: [0.0, 0.0, 0.0]
 #      tags: [121, 122, 123, 124]
 #  - object:
 #      type: MESH
