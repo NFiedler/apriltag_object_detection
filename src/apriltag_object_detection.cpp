@@ -37,7 +37,8 @@ void ApriltagObjectDetection::parseYaml() {
       marker.id = objects[i]["object"]["tag_id"];
 
       // parent frame
-      marker.header.frame_id = "tag_" + std::to_string(marker.id);
+      std::string marker_name = objects[i]["object"]["name"];
+      marker.header.frame_id = marker_name;
 
       // Object type
       std::string marker_type = objects[i]["object"]["type"];
