@@ -597,15 +597,15 @@ tag_bundles:
                   {id: 131, size: 0.0422, x: 0.0008, y: -0.0219, z: -0.0260, qw: 0.7093, qx: 0.7048, qy: 0.0004, qz: -0.0088},
                   {id: 133, size: 0.028,  x: -0.0298, y: -0.0000, z: -0.0182, qw: 0.5021, qx: 0.4970, qy: -0.4958, qz: -0.5051}
                 ]
-#     },
-#     {
-#        name: 'trixi_table', # TODO: Adapt rotation, size and position!
-#              layout:
-#                [
-#                  {id: 21, size: 0.15, x: -0.425, y:  0.325, z: 0.0, qw: 0.0, qx: 0.0, qy: 0.0, qz: 1.0}, # far left
-#                  {id: 22, size: 0.15, x:  0.425, y:  0.325, z: 0.0, qw: 0.0, qx: 0.0, qy: 0.0, qz: 1.0}, # far right
-#                  {id: 23, size: 0.15, x: -0.425, y: -0.325, z: 0.0, qw: 0.0, qx: 0.0, qy: 0.0, qz: 1.0}, # near left
-#                  {id: 24, size: 0.15, x:  0.425, y: -0.325, z: 0.0, qw: 0.0, qx: 0.0, qy: 0.0, qz: 1.0}, # near right
-#                ]
+     },
+     {
+        name: 'table_trixi', # TODO: Adapt rotation, size and position!
+              layout:
+                [
+                  {id: 21, size: 0.12, x: 0.0000, y: 0.0000, z: 0.0000, qw: 1.0000, qx: 0.0000, qy: 0.0000, qz: 0.0000},
+                  {id: 22, size: 0.12, x: 0.8516, y: -0.0282, z: 0.0197, qw: 0.9999, qx: -0.0045, qy: -0.0072, qz: -0.0067},
+                  {id: 23, size: 0.12, x: 0.0009, y: -0.6599, z: 0.0057, qw: 1.0000, qx: -0.0035, qy: -0.0011, qz: -0.0012},
+                  {id: 24, size: 0.12, x: 0.8453, y: -0.6849, z: 0.0286, qw: 0.9999, qx: -0.0122, qy: -0.0045, qz: -0.0053}
+                ]
      }
   ]
