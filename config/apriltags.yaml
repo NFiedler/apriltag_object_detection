@@ -21,10 +21,10 @@ standalone_tags:
   {id:  18, size: 0.153}, # table_lab_large (reserved)
   {id:  19, size: 0.153}, # table_lab_large (reserved)
   {id:  20, size: 0.153}, # table_lab_large (reserved)
-  #{id:  21, size: 0.153},
-  #{id:  22, size: 0.153},
-  #{id:  23, size: 0.153},
-  #{id:  24, size: 0.153},
+  #{id:  21, size: 0.153}, # table_trixi (reserved for bundle)
+  #{id:  22, size: 0.153}, # table_trixi (reserved for bundle)
+  #{id:  23, size: 0.153}, # table_trixi (reserved for bundle)
+  #{id:  24, size: 0.153}, # table_trixi (reserved for bundle)
   #{id:  25, size: 0.153},
   #{id:  26, size: 0.153},
   #{id:  27, size: 0.153},
@@ -130,11 +130,11 @@ standalone_tags:
   #{id: 127, size: 0.153}, #
   #{id: 128, size: 0.153}, # used by tams ur5 setup https://github.com/TAMS-Group/tams_ur5_setup/blob/master/tams_ur5_setup_bringup/config/apriltags2/tags.yaml
   #{id: 129, size: 0.153}, #
-  #{id: 130, size: 0.153}, # piece of wood (reserved for bundle)
-  #{id: 131, size: 0.153}, # piece of wood (reserved for bundle)
-  #{id: 132, size: 0.153}, # piece of wood (reserved for bundle)
-  #{id: 133, size: 0.153}, # piece of wood (reserved for bundle)
-  #{id: 134, size: 0.153}, # piece of wood (reserved for bundle)
+  #{id: 130, size: 0.035}, # piece of wood (reserved for bundle)
+  #{id: 131, size: 0.053}, # piece of wood (reserved for bundle)
+  #{id: 132, size: 0.053}, # piece of wood (reserved for bundle)
+  #{id: 133, size: 0.035}, # piece of wood (reserved for bundle)
+  #{id: 134, size: 0.035}, # piece of wood (reserved for bundle)
   #{id: 135, size: 0.153},
   #{id: 136, size: 0.153},
   #{id: 137, size: 0.153},
@@ -591,11 +591,21 @@ tag_bundles:
         name: 'piece_of_wood', # TODO: Adapt rotation, size and position!
               layout:
                 [
-                  {id: 130, size: 0.08, x: 0.0, y: -0.2, z:  0.3, qw: 0.5, qx: 0.5, qy: 0.5, qz: 0.5}, # top
-                  {id: 131, size: 0.08, x: 0.0, y: 0.2, z:  0.3,  qw: 0.5, qx: 0.5, qy: 0.5, qz: 0.5}, # front
-                  {id: 132, size: 0.08, x: 0.0, y: -0.2, z: -0.3, qw: 0.5, qx: 0.5, qy: 0.5, qz: 0.5}, # back
-                  {id: 133, size: 0.08, x: 0.0, y: 0.2, z: -0.3,  qw: 0.5, qx: 0.5, qy: 0.5, qz: 0.5}, # left  (when seen from front)
-                  {id: 134, size: 0.08, x: 0.0, y: 0.2, z: -0.3,  qw: 0.5, qx: 0.5, qy: 0.5, qz: 0.5}  # right (when seen from front)
+                  {id: 130, size: 0.04, x: 0.0000, y: 0.0000, z: 0.0000, qw: 1.0000, qx: 0.0000, qy: 0.0000, qz: 0.0000},
+                  {id: 134, size: 0.04, x: 0.0441, y: -0.0008, z: -0.0146, qw: 0.4973, qx: 0.5060, qy: 0.5034, qz: 0.4932},
+                  {id: 132, size: 0.05, x: -0.0000, y: 0.0263, z: -0.0341, qw: 0.0028, qx: 0.0114, qy: 0.7104, qz: 0.7037},
+                  {id: 133, size: 0.04, x: -0.0244, y: -0.0019, z: -0.0363, qw: 0.5022, qx: 0.4899, qy: -0.5026, qz: -0.5051},
+                  {id: 131, size: 0.05, x: 0.0008, y: -0.0265, z: -0.0334, qw: 0.7066, qx: 0.7076, qy: -0.0048, qz: -0.0074}
                 ]
+#     },
+#     {
+#        name: 'trixi_table', # TODO: Adapt rotation, size and position!
+#              layout:
+#                [
+#                  {id: 21, size: 0.15, x: -0.425, y:  0.325, z: 0.0, qw: 0.0, qx: 0.0, qy: 0.0, qz: 1.0}, # far left
+#                  {id: 22, size: 0.15, x:  0.425, y:  0.325, z: 0.0, qw: 0.0, qx: 0.0, qy: 0.0, qz: 1.0}, # far right
+#                  {id: 23, size: 0.15, x: -0.425, y: -0.325, z: 0.0, qw: 0.0, qx: 0.0, qy: 0.0, qz: 1.0}, # near left
+#                  {id: 24, size: 0.15, x:  0.425, y: -0.325, z: 0.0, qw: 0.0, qx: 0.0, qy: 0.0, qz: 1.0}, # near right
+#                ]
      }
   ]

@@ -24,6 +24,15 @@ objects:
       rpy: [0.0, 0.0, 0.0]
 #      tags: [18, 19, 20]
   - object:
+      name: "table_trixi"
+      type: CUBE
+      tag_id: 21
+      scale: {x: 1.0, y: 0.8, z: 0.74}
+      # tag offset
+      origin: [0.0, 0.0, 0.0]
+      rpy: [0.0, 0.0, 0.0]
+#      tags: [21, 22, 23, 24]
+  - object:
       name: "continente coffee"
       type: CUBE
       tag_id: 110
@@ -57,7 +66,7 @@ objects:
       # tag offset should be 0 as this is a bundle tag and the offset should be set correctly in the apriltags.yaml
       origin: [0.0, 0.0, 0.0]
       rpy: [0.0, 0.0, 0.0]
-#      tags: [121, 122, 123, 124]
+#      tags: [131, 132, 133, 134]
 #  - object:
 #      type: MESH
 #      mesh: '<path_to_mesh>'
