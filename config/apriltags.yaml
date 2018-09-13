@@ -110,7 +110,7 @@ standalone_tags:
   #{id: 107, size: 0.153},
   #{id: 108, size: 0.153},
   #{id: 109, size: 0.153},
-  {id: 110, size: 0.046}, # continente coffee
+  {id: 110, size: 0.046, name: "continente coffee"}, # continente coffee
   {id: 111, size: 0.046}, # continente coffee (reserved)
   {id: 112, size: 0.046}, # continente coffee (reserved)
   {id: 113, size: 0.046}, # continente coffee (reserved)
